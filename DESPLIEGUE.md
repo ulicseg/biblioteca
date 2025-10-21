@@ -74,9 +74,11 @@ Click en **"Environment Variables"** y agrega:
 
 | Name | Value |
 |------|-------|
-| `VITE_API_URL` | La URL de Render que copiaste (ej: `https://biblioteca-backend.onrender.com`) |
-| `VITE_SUPABASE_URL` | (copia de tu frontend/.env) |
-| `VITE_SUPABASE_ANON_KEY` | (copia de tu frontend/.env) |
+| `VITE_API_URL` | La URL de Render + `/api` (ej: `https://biblioteca-backend.onrender.com/api`) ⚠️ NO OLVIDES `/api` |
+| `VITE_SUPABASE_URL` | `https://hscnkjpqlybbonejbpcz.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (el token completo de tu archivo .env) |
+
+💡 **Tip**: Copia los valores EXACTAMENTE de tu archivo `frontend/.env`
 
 ### Paso 5: Deploy
 1. Click en **"Deploy"**
@@ -166,15 +168,52 @@ Una vez desplegado, tendrás:
 
 ## 🆘 Problemas Comunes
 
-### Error: "Cannot connect to backend"
+### ❌ Error: "Failed to fetch" al hacer login
+
+Este es el error más común. Causas y soluciones:
+
+**1. El backend está dormido (Render Free Tier)**
+- ⏰ Abre la URL del backend directamente: `https://tu-backend.onrender.com`
+- Espera 30-60 segundos hasta que veas el JSON de bienvenida
+- Luego intenta login nuevamente en el frontend
+
+**2. La URL del backend está mal configurada en Vercel**
+- 🔍 Ve a Vercel → Tu proyecto → Settings → Environment Variables
+- Verifica que `VITE_API_URL` sea EXACTAMENTE: `https://tu-backend.onrender.com/api`
+- ⚠️ **MUY IMPORTANTE**: Debe terminar en `/api`
+- Si la cambias, debes hacer un nuevo deploy: Deployments → "..." → Redeploy
+
+**3. Error de CORS**
+- 🌐 Abre la consola del navegador (F12) → Pestaña "Console"
+- Si ves un error rojo que mencione "CORS" o "blocked by CORS policy":
+  - El backend ya acepta dominios de Vercel (`.vercel.app`)
+  - Pero necesitas redesplegar: ve a Render → Manual Deploy → Deploy latest commit
+  - O haz un push a GitHub (Render se redesplega automáticamente)
+
+**4. Verificación paso a paso:**
+```bash
+# 1. Verifica que el backend esté funcionando:
+curl https://tu-backend.onrender.com
+# Deberías ver: {"success":true,"mensaje":"API Sistema..."}
+
+# 2. Verifica que la ruta de login exista:
+curl https://tu-backend.onrender.com/api/auth/login
+# Deberías ver: {"error":"..."} o similar (no "Cannot GET")
+```
+
+### ❌ Error: "Cannot connect to backend"
 - ✅ Verifica que la variable `VITE_API_URL` esté correcta en Vercel
-- ✅ Verifica que el backend esté "Live" en Render
+- ✅ Verifica que el backend esté "Live" (verde) en Render
+- ✅ Abre el backend en el navegador, debe mostrar JSON
 
-### Error: "CORS policy"
-- ✅ Agrega la URL de Vercel al CORS del backend (ver sección CORS arriba)
+### ❌ Error: "CORS policy"
+- ✅ El código ya acepta dominios `.vercel.app`
+- ✅ Asegúrate de haber hecho commit y push del último código
+- ✅ En Render, haz un redespliegue manual si no se actualizó
 
-### Backend muy lento
-- ⏰ Normal en el plan gratuito. Primera request tarda ~30 segundos (el servidor "despierta")
+### ⏰ Backend muy lento (primera request)
+- ⏰ Normal en el plan gratuito. Primera request tarda ~30-60 segundos
+- 💡 Solución: Abre la URL del backend en una pestaña y déjala abierta
 
 ---
 

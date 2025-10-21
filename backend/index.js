@@ -27,16 +27,29 @@ const corsOptions = {
     const allowedOrigins = [
       'http://localhost:5173',
       'http://localhost:3000',
-      process.env.FRONTEND_URL // URL del frontend en producción
+      process.env.FRONTEND_URL, // URL del frontend en producción desde variable de entorno
+      /vercel\.app$/, // Cualquier dominio de Vercel
+      /\.vercel\.app$/ // Cualquier subdominio de Vercel
     ].filter(Boolean); // Eliminar valores undefined
 
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Si no hay origin (Postman, server-to-server) o si está en la lista, permitir
+    if (!origin) {
+      callback(null, true);
+    } else if (allowedOrigins.some(allowed => {
+      if (allowed instanceof RegExp) {
+        return allowed.test(origin);
+      }
+      return allowed === origin;
+    })) {
       callback(null, true);
     } else {
+      console.log('CORS blocked origin:', origin);
       callback(new Error('No permitido por CORS'));
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 // Middlewares globales
