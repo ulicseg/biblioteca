@@ -20,9 +20,28 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configurar CORS para permitir el frontend en producción
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Permitir requests sin origin (como Postman) o desde dominios permitidos
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      process.env.FRONTEND_URL // URL del frontend en producción
+    ].filter(Boolean); // Eliminar valores undefined
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
+  credentials: true
+};
+
 // Middlewares globales
 app.use(helmet()); // Seguridad HTTP headers
-app.use(cors()); // Habilitar CORS
+app.use(cors(corsOptions)); // Habilitar CORS con configuración
 app.use(express.json()); // Parser de JSON
 app.use(express.urlencoded({ extended: true })); // Parser de URL-encoded
 app.use(securityHeaders); // Headers de seguridad adicionales
