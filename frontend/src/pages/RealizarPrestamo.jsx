@@ -139,47 +139,56 @@ const RealizarPrestamo = () => {
     maxWidth: '900px',
     margin: '0 auto',
     padding: '20px',
+    minHeight: '100vh',
   };
 
   const titleStyle = {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '32px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
     marginBottom: '24px',
     textAlign: 'center',
   };
 
   const sectionStyle = {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    marginBottom: '20px',
+    backgroundColor: '#1E293B', // Fondo Secundario
+    padding: '24px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+    border: '1px solid #334155', // Borde sutil
+    marginBottom: '24px',
   };
 
   const sectionTitleStyle = {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '22px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
     marginBottom: '16px',
   };
 
   const mensajeStyle = {
-    padding: '12px',
-    borderRadius: '5px',
+    padding: '14px 16px',
+    borderRadius: '8px',
     marginBottom: '20px',
     fontSize: '14px',
-    backgroundColor: mensaje.tipo === 'success' ? '#d4edda' : '#f8d7da',
-    color: mensaje.tipo === 'success' ? '#155724' : '#721c24',
-    border: `1px solid ${mensaje.tipo === 'success' ? '#c3e6cb' : '#f5c6cb'}`,
+    fontFamily: 'var(--font-body)',
+    backgroundColor: mensaje.tipo === 'success' ? '#22C55E' : '#EF4444',
+    color: '#0F172A',
+    border: `1px solid ${mensaje.tipo === 'success' ? '#16A34A' : '#DC2626'}`,
+    textAlign: 'center',
+    fontWeight: '600',
   };
 
   const infoCardStyle = {
-    backgroundColor: '#e7f3ff',
+    backgroundColor: '#334155', // Gris más oscuro para info
     padding: '16px',
-    borderRadius: '5px',
+    borderRadius: '8px',
     marginTop: '16px',
-    border: '1px solid #b3d9ff',
+    border: '1px solid #475569',
+    color: '#E2E8F0',
+    fontFamily: 'var(--font-body)',
   };
 
   return (
@@ -211,7 +220,12 @@ const RealizarPrestamo = () => {
 
         {librosEncontrados.length > 0 && (
           <div style={{ marginTop: '20px' }}>
-            <h3 style={{ fontSize: '16px', marginBottom: '12px' }}>Resultados:</h3>
+            <h3 style={{ 
+              fontSize: '16px', 
+              marginBottom: '12px',
+              color: '#94A3B8',
+              fontFamily: 'var(--font-body)',
+            }}>Resultados:</h3>
             {librosEncontrados.map(libro => (
               <BookCard
                 key={libro.isbn}

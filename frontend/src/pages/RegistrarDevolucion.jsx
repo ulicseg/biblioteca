@@ -150,47 +150,56 @@ const RegistrarDevolucion = () => {
     maxWidth: '1200px',
     margin: '0 auto',
     padding: '20px',
+    minHeight: '100vh',
   };
 
   const titleStyle = {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '32px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
     marginBottom: '24px',
     textAlign: 'center',
   };
 
   const sectionStyle = {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    marginBottom: '20px',
+    backgroundColor: '#1E293B', // Fondo Secundario
+    padding: '24px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+    border: '1px solid #334155',
+    marginBottom: '24px',
   };
 
   const sectionTitleStyle = {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '22px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0',
     marginBottom: '16px',
   };
 
   const mensajeStyle = {
-    padding: '12px',
-    borderRadius: '5px',
+    padding: '14px 16px',
+    borderRadius: '8px',
     marginBottom: '20px',
     fontSize: '14px',
-    backgroundColor: mensaje.tipo === 'success' ? '#d4edda' : '#f8d7da',
-    color: mensaje.tipo === 'success' ? '#155724' : '#721c24',
-    border: `1px solid ${mensaje.tipo === 'success' ? '#c3e6cb' : '#f5c6cb'}`,
+    fontFamily: 'var(--font-body)',
+    backgroundColor: mensaje.tipo === 'success' ? '#22C55E' : '#EF4444',
+    color: '#0F172A',
+    border: `1px solid ${mensaje.tipo === 'success' ? '#16A34A' : '#DC2626'}`,
+    textAlign: 'center',
+    fontWeight: '600',
   };
 
   const infoCardStyle = {
-    backgroundColor: '#e7f3ff',
+    backgroundColor: '#334155',
     padding: '16px',
-    borderRadius: '5px',
+    borderRadius: '8px',
     marginTop: '16px',
-    border: '1px solid #b3d9ff',
+    border: '1px solid #475569',
+    color: '#E2E8F0',
+    fontFamily: 'var(--font-body)',
   };
 
   const checkboxStyle = {
@@ -204,11 +213,14 @@ const RegistrarDevolucion = () => {
     height: '20px',
     marginRight: '10px',
     cursor: 'pointer',
+    accentColor: '#34D399', // Verde Esmeralda para checkbox
   };
 
   const checkboxLabelStyle = {
     fontSize: '16px',
     cursor: 'pointer',
+    color: '#E2E8F0',
+    fontFamily: 'var(--font-body)',
   };
 
   const tableStyle = {
@@ -218,26 +230,32 @@ const RegistrarDevolucion = () => {
   };
 
   const thStyle = {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#0F172A', // Fondo Principal más oscuro
     padding: '12px',
     textAlign: 'left',
-    borderBottom: '2px solid #dee2e6',
-    fontWeight: 'bold',
+    borderBottom: '2px solid #334155',
+    color: '#E2E8F0',
+    fontFamily: 'var(--font-heading)',
+    fontWeight: '700',
+    fontWeight: '700',
     fontSize: '14px',
   };
 
   const tdStyle = {
     padding: '12px',
-    borderBottom: '1px solid #dee2e6',
+    borderBottom: '1px solid #334155',
     fontSize: '14px',
+    color: '#94A3B8', // Gris Claro
+    fontFamily: 'var(--font-body)',
   };
 
   const badgeStyle = {
     display: 'inline-block',
-    padding: '4px 8px',
-    borderRadius: '12px',
+    padding: '6px 12px',
+    borderRadius: '16px',
     fontSize: '12px',
-    fontWeight: '500',
+    fontWeight: '600',
+    fontFamily: 'var(--font-body)',
   };
 
   return (
@@ -308,9 +326,9 @@ const RegistrarDevolucion = () => {
                       <td style={tdStyle}>
                         <span style={{
                           ...badgeStyle,
-                          backgroundColor: estaAtrasado ? '#f8d7da' : estaPorVencer ? '#fff3cd' : '#d4edda',
-                          color: estaAtrasado ? '#721c24' : estaPorVencer ? '#856404' : '#155724',
-                          border: `1px solid ${estaAtrasado ? '#f5c6cb' : estaPorVencer ? '#ffeeba' : '#c3e6cb'}`,
+                          backgroundColor: estaAtrasado ? '#EF4444' : estaPorVencer ? '#F59E0B' : '#22C55E',
+                          color: '#0F172A', // Negro para máximo contraste
+                          border: 'none',
                         }}>
                           {estaAtrasado ? `Atrasado ${Math.abs(diasRestantes)} días` : 
                            estaPorVencer ? `Vence en ${diasRestantes} días` : 
@@ -396,7 +414,13 @@ const RegistrarDevolucion = () => {
             </div>
 
             {libroDanado && (
-              <div style={{ ...infoCardStyle, backgroundColor: '#fff3cd', borderColor: '#ffeaa7' }}>
+              <div style={{ 
+                ...infoCardStyle, 
+                backgroundColor: '#F59E0B', // Ámbar para advertencia
+                borderColor: '#D97706',
+                color: '#0F172A',
+                fontWeight: '600',
+              }}>
                 <strong>⚠️ Atención:</strong> Se generará una multa de $500 por daño en el libro.
               </div>
             )}

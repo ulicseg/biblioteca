@@ -1,0 +1,79 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variables CSS - Paleta "El Búho Digital" */
+:root {
+  /* Colores de Fondo */
+  --bg-primary: #0F172A;        /* Azul Pizarra Oscuro */
+  --bg-secondary: #1E293B;      /* Gris Pizarra */
+  
+  /* Colores de Acento */
+  --accent-primary: #34D399;    /* Verde Esmeralda */
+  --accent-hover: #6EE7B7;      /* Verde Esmeralda Claro (hover) */
+  
+  /* Colores de Texto */
+  --text-primary: #E2E8F0;      /* Blanco Hueso */
+  --text-secondary: #94A3B8;    /* Gris Claro */
+  
+  /* Bordes y Líneas */
+  --border-color: #334155;      /* Gris Oscuro */
+  
+  /* Estados */
+  --error-color: #EF4444;       /* Rojo Intenso */
+  --success-color: #22C55E;     /* Verde Éxito */
+  --warning-color: #F59E0B;     /* Ámbar */
+  
+  /* Tipografía */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+button, input, textarea, select {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+}
+
+code {
+  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
+}
+
+/* Scrollbar personalizado para navegadores webkit */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

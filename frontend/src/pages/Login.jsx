@@ -52,47 +52,54 @@ const Login = () => {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#0F172A', // Fondo Principal
+    padding: '20px',
   };
 
   const loginBoxStyle = {
-    backgroundColor: '#fff',
-    padding: '40px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    backgroundColor: '#1E293B', // Fondo Secundario
+    padding: '48px',
+    borderRadius: '16px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+    border: '1px solid #334155', // Borde sutil
     width: '100%',
-    maxWidth: '400px',
+    maxWidth: '440px',
   };
 
   const titleStyle = {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '32px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
     marginBottom: '8px',
     textAlign: 'center',
   };
 
   const subtitleStyle = {
     fontSize: '16px',
-    color: '#666',
+    fontFamily: 'var(--font-body)',
+    color: '#94A3B8', // Gris Claro
     marginBottom: '32px',
     textAlign: 'center',
   };
 
   const iconStyle = {
-    fontSize: '48px',
+    fontSize: '56px',
     textAlign: 'center',
-    marginBottom: '16px',
+    marginBottom: '20px',
+    filter: 'grayscale(0.3)',
   };
 
   const mensajeStyle = {
-    padding: '12px',
-    borderRadius: '5px',
+    padding: '14px 16px',
+    borderRadius: '8px',
     marginBottom: '20px',
     fontSize: '14px',
-    backgroundColor: '#f8d7da',
-    color: '#721c24',
-    border: '1px solid #f5c6cb',
+    fontFamily: 'var(--font-body)',
+    backgroundColor: '#EF4444', // Rojo Intenso
+    color: '#E2E8F0', // Blanco Hueso
+    border: '1px solid #DC2626',
+    textAlign: 'center',
   };
 
   return (

@@ -1,39 +1,47 @@
 import React from 'react';
 
 /**
- * Componente BookCard para mostrar información de un libro
+ * Componente BookCard para mostrar información de un libro - Estilo "El Búho Digital"
  */
 const BookCard = ({ libro, onSelect, showSelect = false }) => {
   const cardStyle = {
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    padding: '16px',
+    border: '1px solid #334155', // Gris Oscuro - borde sutil
+    borderRadius: '12px',
+    padding: '20px',
     marginBottom: '16px',
-    backgroundColor: '#fff',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    transition: 'transform 0.2s ease',
+    backgroundColor: '#1E293B', // Fondo Secundario (Gris Pizarra)
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+    transition: 'all 0.2s ease',
   };
 
   const titleStyle = {
-    fontSize: '18px',
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: '8px',
+    fontSize: '20px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
+    marginBottom: '12px',
   };
 
   const infoStyle = {
     fontSize: '14px',
-    color: '#666',
-    marginBottom: '4px',
+    fontFamily: 'var(--font-body)',
+    color: '#94A3B8', // Gris Claro
+    marginBottom: '6px',
+  };
+
+  const strongStyle = {
+    color: '#E2E8F0', // Blanco Hueso para labels
+    fontWeight: '600',
   };
 
   const badgeStyle = {
     display: 'inline-block',
-    padding: '4px 12px',
-    borderRadius: '12px',
-    fontSize: '12px',
-    fontWeight: '500',
-    marginTop: '8px',
+    padding: '6px 14px',
+    borderRadius: '16px',
+    fontSize: '13px',
+    fontWeight: '600',
+    fontFamily: 'var(--font-body)',
+    marginTop: '12px',
     marginRight: '8px',
   };
 
@@ -43,46 +51,62 @@ const BookCard = ({ libro, onSelect, showSelect = false }) => {
     <div 
       style={cardStyle}
       onMouseOver={(e) => {
-        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 6px 12px rgba(52, 211, 153, 0.2)';
       }}
       onMouseOut={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
       }}
     >
       <div style={titleStyle}>{libro.titulo}</div>
       <div style={infoStyle}>
-        <strong>Autor:</strong> {libro.autor}
+        <span style={strongStyle}>Autor:</span> {libro.autor}
       </div>
       <div style={infoStyle}>
-        <strong>ISBN:</strong> {libro.isbn}
+        <span style={strongStyle}>ISBN:</span> {libro.isbn}
       </div>
       <div style={infoStyle}>
-        <strong>Copias:</strong> {libro.copias_disponibles} disponible{libro.copias_disponibles !== 1 ? 's' : ''} de {libro.total_copias} total{libro.total_copias !== 1 ? 'es' : ''}
+        <span style={strongStyle}>Copias:</span> {libro.copias_disponibles} disponible{libro.copias_disponibles !== 1 ? 's' : ''} de {libro.total_copias} total{libro.total_copias !== 1 ? 'es' : ''}
       </div>
       
+      {/* Pill de estado con colores de la paleta */}
       <span 
         style={{
           ...badgeStyle,
-          backgroundColor: hayDisponibles ? '#d4edda' : '#f8d7da',
-          color: hayDisponibles ? '#155724' : '#721c24',
+          backgroundColor: hayDisponibles ? '#34D399' : '#EF4444', // Verde Esmeralda o Rojo Intenso
+          color: '#0F172A', // Negro para contraste
         }}
       >
         {hayDisponibles ? '✓ Disponible' : '✗ No disponible'}
       </span>
       
       {showSelect && onSelect && (
-        <div style={{ marginTop: '12px' }}>
+        <div style={{ marginTop: '16px' }}>
           <button
             onClick={() => onSelect(libro)}
             disabled={!hayDisponibles}
             style={{
-              padding: '8px 16px',
-              backgroundColor: !hayDisponibles ? '#ccc' : '#007bff',
-              color: '#fff',
+              padding: '10px 20px',
+              backgroundColor: !hayDisponibles ? '#94A3B8' : '#34D399', // Verde Esmeralda
+              color: '#0F172A',
               border: 'none',
-              borderRadius: '5px',
+              borderRadius: '8px',
               cursor: !hayDisponibles ? 'not-allowed' : 'pointer',
               fontSize: '14px',
+              fontWeight: '600',
+              fontFamily: 'var(--font-body)',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              if (hayDisponibles) {
+                e.target.style.backgroundColor = '#6EE7B7'; // Verde más brillante
+              }
+            }}
+            onMouseOut={(e) => {
+              if (hayDisponibles) {
+                e.target.style.backgroundColor = '#34D399';
+              }
             }}
           >
             Seleccionar

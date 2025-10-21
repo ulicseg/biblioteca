@@ -57,31 +57,37 @@ const GestionSocios = () => {
     maxWidth: '600px',
     margin: '0 auto',
     padding: '20px',
+    minHeight: '100vh',
   };
 
   const titleStyle = {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: '32px',
+    fontWeight: '700',
+    fontFamily: 'var(--font-heading)',
+    color: '#E2E8F0', // Blanco Hueso
     marginBottom: '24px',
     textAlign: 'center',
   };
 
   const cardStyle = {
-    backgroundColor: '#fff',
-    padding: '30px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    backgroundColor: '#1E293B', // Fondo Secundario
+    padding: '32px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+    border: '1px solid #334155', // Borde sutil
   };
 
   const mensajeStyle = {
-    padding: '12px',
-    borderRadius: '5px',
+    padding: '14px 16px',
+    borderRadius: '8px',
     marginBottom: '20px',
     fontSize: '14px',
-    backgroundColor: mensaje.tipo === 'success' ? '#d4edda' : '#f8d7da',
-    color: mensaje.tipo === 'success' ? '#155724' : '#721c24',
-    border: `1px solid ${mensaje.tipo === 'success' ? '#c3e6cb' : '#f5c6cb'}`,
+    fontFamily: 'var(--font-body)',
+    backgroundColor: mensaje.tipo === 'success' ? '#22C55E' : '#EF4444',
+    color: '#0F172A', // Negro para contraste
+    border: `1px solid ${mensaje.tipo === 'success' ? '#16A34A' : '#DC2626'}`,
+    textAlign: 'center',
+    fontWeight: '600',
   };
 
   return (
